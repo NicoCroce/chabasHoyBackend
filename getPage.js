@@ -32,7 +32,7 @@ function getPage() {
         console.log('antes');
         request(requestOptions, function (error, response, body) {
             var utf8String = iconv.decode(new Buffer(body), "ISO-8859-1");
-            fs.writeFile('comepleteHTML.html', utf8String);
+            /* fs.writeFile('comepleteHTML.html', utf8String); */
             getIndexesOf(utf8String)
                 .then(function (result) {
                     console.log(result);
@@ -83,9 +83,9 @@ function getIndexesOf(html) {
         getPresion();
         getViento();
         getLluvia();
-        setTimeout(function () {
+        /* setTimeout(function () { */
             resolve(JSON.stringify(stringToFind.valores));
-        }, 3000);
+        /* }, 3000); */
 
         /* fs.writeFile('dataFormated.json', JSON.stringify(stringToFind.valores));
         fs.writeFile('stringToFind.json', JSON.stringify(stringToFind.blockInfo)); */
