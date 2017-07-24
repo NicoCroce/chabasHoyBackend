@@ -13,7 +13,7 @@ app.listen(app.get('port'), function () {
 app.get('/clima', function(req, res){
   getPage.getPage()
     .then(function (result) {
-      console.log(result);
+      console.log('Retorna Datos > ' + result);
       res.status(200).send(result);
     });
 });

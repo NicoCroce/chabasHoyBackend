@@ -29,7 +29,6 @@ var stringToFind = {
 
 function getPage() {
     return new Promise(function (resolve, reject) {
-        console.log('antes');
         request(requestOptions, function (error, response, body) {
             var utf8String = iconv.decode(new Buffer(body), "ISO-8859-1");
             /* fs.writeFile('comepleteHTML.html', utf8String); */
