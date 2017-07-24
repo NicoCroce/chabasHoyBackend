@@ -83,9 +83,9 @@ function getIndexesOf(html) {
         getPresion();
         getViento();
         getLluvia();
-        setTimeout(function () {
-            resolve(JSON.stringify(stringToFind.valores));
-        }, 3000);
+        /* setTimeout(function () { */
+        resolve(JSON.stringify(stringToFind.valores));
+        /* }, 3000); */
 
         /* fs.writeFile('dataFormated.json', JSON.stringify(stringToFind.valores));
         fs.writeFile('stringToFind.json', JSON.stringify(stringToFind.blockInfo)); */
