@@ -10,14 +10,12 @@ app.listen(app.get('port'), function () {
   console.log('Example app listening on port ' + app.get('port'));
 });
 
-app.get('/clima', function(req, res){
-  getPage.getPage()
-    .then(function (result) {
-      console.log('Retorna Datos > ' + result);
-      res.status(200).send(result);
-    });
+app.get('/clima', function (req, res) {
+  cors(req, res, () => {
+    getPage.getPage()
+      .then(function (result) {
+        console.log('Retorna Datos > ' + result);
+        res.status(200).send(result);
+      });
+  });
 });
-/* cors(req, res, () =>  {*/
-  
-  // [END sendResponse]
-/* }); */
