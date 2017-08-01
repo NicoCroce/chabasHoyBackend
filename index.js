@@ -27,9 +27,9 @@ function request() {
   }); */
 }
 
-/* request(); */
+request(); 
 
-setInterval(request, 1000);
+setInterval(request, 60000);
 /* app.get('/clima', function (req, res) {
   cors(req, res, () => {
     getPage.getPage()
