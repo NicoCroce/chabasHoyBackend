@@ -5,6 +5,11 @@ const cors = require('cors')({ origin: true });
 const getPage = require('./getPage.js');
 const firebase = require('./firebase.js');
 
+var http = require("http");
+setInterval(function() {
+    http.get("https://chabashoy.herokuapp.com/");
+}, 300000); // every 5 minutes (300000)
+
 /* var app = express();
 app.set('port', (process.env.PORT || 3000));
 
@@ -22,7 +27,7 @@ function request() {
 
 request();
 
-setInterval(request, 10000);
+setInterval(request, 60000);
 
 /* app.get('/clima', function (req, res) {
   cors(req, res, () => {
