@@ -5,18 +5,19 @@ const cors = require('cors')({ origin: true });
 const getPage = require('./getPage.js');
 const firebase = require('./firebase.js');
 
-var http = require("http");
-setInterval(function() {
-    http.get("https://chabashoy.herokuapp.com/");
-}, 300000); // every 5 minutes (300000)
-
-/* var app = express();
-app.set('port', (process.env.PORT || 3000));
+ var app = express();
+app.set('port', (process.env.PORT || 2173));
 
 app.listen(app.get('port'), function () {
   console.log('Example app listening on port ' + app.get('port'));
 });
- */
+
+app.get('/', function (req, res) {
+  cors(req, res, () => {
+    getPage.getPage()
+      res.status(200).send('Conectado');
+  });
+});
 
 function request() {
   console.log(new Date());
