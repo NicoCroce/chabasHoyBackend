@@ -22,7 +22,7 @@ function request() {
 
 request();
 
-setInterval(request, 60000);
+setInterval(request, 10000);
 
 /* app.get('/clima', function (req, res) {
   cors(req, res, () => {
