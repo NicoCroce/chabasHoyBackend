@@ -20,11 +20,11 @@ app.get('/', function (req, res) {
 });
 
 function request() {
-  console.log(new Date());
-  /* getPage.getPage()
+   getPage.getPage()
     .then(function (result) {
        firebase.sendData(result); 
-  }); */
+  }); 
+    console.log('Eviando a Firebase: ' + new Date());
 }
 
 request(); 
