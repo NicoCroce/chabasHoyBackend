@@ -41,7 +41,6 @@ function getPage() {
     });
 };
 
-
 function getIndexesOf(html) {
     return new Promise(function (resolve, reject) {
         var indexStart = html.indexOf(stringToFind.table.start);
