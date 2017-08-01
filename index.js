@@ -19,16 +19,16 @@ app.listen(app.get('port'), function () {
  */
 
 function request() {
-  getPage.getPage()
+  console.log(new Date());
+  /* getPage.getPage()
     .then(function (result) {
        firebase.sendData(result); 
-  });
+  }); */
 }
 
-request();
+/* request(); */
 
-/* setInterval(request, 300000);
- */
+setInterval(request, 1000);
 /* app.get('/clima', function (req, res) {
   cors(req, res, () => {
     getPage.getPage()
