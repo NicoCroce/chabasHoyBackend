@@ -8,7 +8,11 @@ admin.initializeApp({
 });
 
 var db = admin.database();
-var ref = db.ref("users");
-ref.once("value", function (snapshot) {
-    console.log(snapshot.val());
-});
+var ref = db.ref("clima");
+
+function sendData(data) {
+    /* var newTelKey = firebase.database().ref('data/servicios/utiles').push().key; */
+     ref.update(data);
+}
+
+exports.sendData = sendData;

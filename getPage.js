@@ -23,7 +23,8 @@ var stringToFind = {
         temperaturaHumedad: {},
         presion: {},
         viento: {},
-        lluvia: {}
+        lluvia: {},
+        ts: null
     }
 };
 
@@ -34,7 +35,6 @@ function getPage() {
             /* fs.writeFile('comepleteHTML.html', utf8String); */
             getIndexesOf(utf8String)
                 .then(function (result) {
-                    console.log(result);
                     resolve(result);
                 });
         });
@@ -82,8 +82,9 @@ function getIndexesOf(html) {
         getPresion();
         getViento();
         getLluvia();
+        stringToFind.valores.ts = new Date();
         /* setTimeout(function () { */
-        resolve(JSON.stringify(stringToFind.valores));
+        resolve(stringToFind.valores);
         /* }, 3000); */
 
         /* fs.writeFile('dataFormated.json', JSON.stringify(stringToFind.valores));
