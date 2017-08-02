@@ -16,6 +16,8 @@ var stringToFind = {
     },
     blockInfo: {},
     valores: {
+        fecha: null,
+        hora: null,
         temperatura: {},
         humedad: {},
         rocio: {},
@@ -32,7 +34,7 @@ function getPage() {
     return new Promise(function (resolve, reject) {
         request(requestOptions, function (error, response, body) {
             var utf8String = iconv.decode(new Buffer(body), "ISO-8859-1");
-            /* fs.writeFile('comepleteHTML.html', utf8String); */
+            /* fs.writeFile('comepleteHTML.html', utf8String);  */
             getIndexesOf(utf8String)
                 .then(function (result) {
                     resolve(result);
@@ -41,8 +43,11 @@ function getPage() {
     });
 };
 
+getPage();
+
 function getIndexesOf(html) {
     return new Promise(function (resolve, reject) {
+        setFechaHora(html);
         var indexStart = html.indexOf(stringToFind.table.start);
         var indexEnd = html.indexOf(stringToFind.table.end, indexStart) + stringToFind.table.end.length;
         // Buscar todas las tablas, son las que contienen la info.
@@ -81,16 +86,27 @@ function getIndexesOf(html) {
         getPresion();
         getViento();
         getLluvia();
-        stringToFind.valores.ts = new Date();
+        stringToFind.valores.ts = '' + new Date();
         /* setTimeout(function () { */
         resolve(stringToFind.valores);
         /* }, 3000); */
 
         /* fs.writeFile('dataFormated.json', JSON.stringify(stringToFind.valores));
-        fs.writeFile('stringToFind.json', JSON.stringify(stringToFind.blockInfo)); */
+        fs.writeFile('stringToFind.json', JSON.stringify(stringToFind.blockInfo));  */
     });
 }
 
+
+function setFechaHora(html) {
+    var indexStartF = html.indexOf('FECHA:') + 'FECHA:'.length;
+    var indexEndF = html.indexOf('</b>', indexStartF);
+    stringToFind.valores.fecha = html.substring(indexStartF, indexEndF).trim();
+
+    var indexStartH = html.indexOf('HORA:') + 'HORA:'.length;
+    var indexEndH = html.indexOf('</b>', indexStartH);
+    stringToFind.valores.hora = html.substring(indexStartH, indexEndH).trim();
+    return;
+}
 
 function clearText(stringToClean) {
     var firstChar = stringToClean.indexOf('>') + 1;

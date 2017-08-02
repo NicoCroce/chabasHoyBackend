@@ -12,10 +12,10 @@ app.listen(app.get('port'), function () {
   console.log('Example app listening on port ' + app.get('port'));
 });
 
-setInterval(function () {
+/* setInterval(function () {
   app.get("https://chabashoy.herokuapp.com/");
   console.log('Despertando');
-}, 300000); // every 5 minutes (300000)
+}, 300000); // every 5 minutes (300000) */
 
 app.get('/', function (req, res) {
   cors(req, res, () => {
