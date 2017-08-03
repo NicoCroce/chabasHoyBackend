@@ -24,6 +24,16 @@ app.get('/', function (req, res) {
   });
 });
 
+app.get('/clima', function (req, res) {
+  cors(req, res, () => {
+    getPage.getPage()
+      .then(function (result) {
+        console.log('Retorna Datos > ' + result);
+        res.status(200).send(result);
+      });
+  });
+});
+
 function request() {
   getPage.getPage()
     .then(function (result) {
@@ -35,13 +45,5 @@ function request() {
 request();
 
 setInterval(request, 60000);
-/* app.get('/clima', function (req, res) {
-  cors(req, res, () => {
-    getPage.getPage()
-      .then(function (result) {
-        console.log('Retorna Datos > ' + result);
-        res.status(200).send(result);
-      });
-  });
-});
- */
+
+
