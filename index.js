@@ -28,13 +28,14 @@ app.get('/clima', function (req, res) {
   cors(req, res, () => {
     getPage.getPage()
       .then(function (result) {
-        console.log('Retorna Datos > ' + result);
+        console.log('Eviando a Firebase: ' + new Date());
+        firebase.sendData(result);
         res.status(200).send(result);
       });
   });
 });
 
-/* function request() {
+/*  function request() {
   getPage.getPage()
     .then(function (result) {
       firebase.sendData(result);
@@ -44,6 +45,6 @@ app.get('/clima', function (req, res) {
 
 request();
 
-setInterval(request, 60000); */
+setInterval(request, 60000);  */
 
 
